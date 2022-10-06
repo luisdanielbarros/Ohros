@@ -1,38 +1,1082 @@
-.App {
-  text-align: center;
+/*----------------------------------------------------------------*/
+/*Z-Index
+1 - Default
+2 - Operation Sidebar
+3 - Type Selector
+4 - Navigation Menu & Footer*/
+/*----------------------------------------------------------------*/
+/*General*/
+/*General -> Fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: 300;
+  transition: 0.5s all ease-in-out;
 }
-
-.App-header {
-  background-color: #282c34;
+a:hover {
+  color: white;
+  filter: brightness(87.5%);
+}
+/*General -> Bootstrap fixes*/
+.container-fluid {
+  padding: 0;
+}
+.row {
+  margin: 0;
+}
+/*General -> Body*/
+html,
+body {
+  position: relative;
   min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: white;
+}
+/*----------------------------------------------------------------*/
+/*Navination Menu & Footer*/
+.navigation-menu {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 4rem;
+}
+.navigation-menu-links {
+  width: 100%;
+}
+.navigation-menu-links a {
+  transition: 0.5s all ease-in-out;
+}
+.navigation-menu-links a:hover {
+  background-color: rgba(255, 255, 255, 0.125);
+}
+.navigation-menu-links a.active {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+/*----------------------------------------------------------------*/
+/*Footer*/
+.footer {
+  position: relative;
+  bottom: 0;
+  z-index: 4;
+  width: 100%;
+  height: 2rem;
+  padding: 0.25rem 0.25rem 0.25rem 0;
+}
+.footer-links {
+  display: block;
+  width: 100%;
+}
+.footer-links .nav-item {
+  display: inline-block;
+  text-align: left;
+  padding-left: 1rem;
+}
+.footer-links p {
+  color: white;
+  margin: 0;
+  font-size: 0.75rem;
+}
+/*----------------------------------------------------------------*/
+/*Forms*/
+form {
+  width: 100%;
+}
+/*Forms -> Headings*/
+form h2,
+form h3,
+form h4 {
+  color: white;
+}
+form h2 {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed white;
+}
+/*Form -> Tabs*/
+.form-tabs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-evenly;
+  flex: 1;
+}
+/*Form -> Tabs -> Tab*/
+.form-tabs .nav-item {
+  flex: 1;
+  margin-bottom: -1px;
+  border-top-left-radius: 0.5rem;
+}
+.form-tabs .nav-item .nav-link {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  color: white;
+}
+.form-tabs .nav-item .nav-link.active {
+  color: #202020;
+}
+/*Form -> Tabs -> Content*/
+form > .tab-content {
+  padding: 4rem 1rem 1rem 1rem;
+}
+/*Forms -> Form Group*/
+.form-group {
+  margin: 0;
+  padding: 0;
+}
+/*Forms -> Attribute Group*/
+.form-attribute-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+/*Forms -> Sub Group*/
+.form-sub-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+/*Forms -> Attribute*/
+.form-attribute {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+/*Forms -> Attribute -> Input, TextArea & Button*/
+.form-attribute input,
+.form-attribute textarea,
+.form-attribute button,
+.wb-close button {
+  max-width: 100%;
+  width: 100%;
+}
+/*Forms -> Attribute -> Input & TextArea*/
+.form-attribute input,
+.form-attribute textarea {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: #202020;
+  border-bottom: 1px solid white;
+  font-size: 1rem;
+  transition: 0.25s all ease-in-out;
+}
+.form-attribute textarea {
+  font-size: 0.875rem;
+}
+.form-attribute input:focus,
+.form-attribute textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.125);
+  color: #404040;
+  font-size: 1.25rem;
+}
+.form-attribute textarea:focus {
+  font-size: 0.9rem;
+}
+/*Forms -> Attribute -> Select*/
+.form-attribute select {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  height: 2rem;
+  padding: 0 0 0 0.5rem;
+}
+/*Forms -> Attribute -> Button*/
+.form-group button {
+  margin-top: 1rem;
+  border-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+/*Forms -> Attribute -> Label*/
+.form-attribute label {
+  color: #202020;
+  font-size: 1rem;
+}
+/*Forms -> Attribute -> Span*/
+.form-attribute span {
+  color: #202020;
+  font-size: 0.75rem;
+}
+/*Forms -> Attribute Small Integer*/
+.form-attribute-smallint {
+  width: 2rem;
+}
+/*Forms -> Attribute Ocean Model, Attribute Jung Model*/
+.form-attribute-oceanmodel,
+.form-attribute-jungmodel {
+  display: block;
+  width: 100% !important;
+  height: 32rem !important;
+}
+.form-attribute-oceanmodel .recharts-wrapper,
+.form-attribute-oceanmodel .recharts-surface,
+.form-attribute-jungmodel .recharts-wrapper,
+.form-attribute-jungmodel .recharts-surface {
+  width: 30rem !important;
+  height: 30rem !important;
+  min-width: 100%;
+}
+.form-attribute-oceanmodel .controls,
+.form-attribute-jungmodel .controls {
+  margin-top: -2rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+.form-attribute-oceanmodel .controls > div,
+.form-attribute-jungmodel .controls > div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.form-attribute-oceanmodel .controls > div p,
+.form-attribute-jungmodel .controls > div p {
+  margin: 0;
+}
+.form-attribute-oceanmodel .controls > div > div,
+.form-attribute-jungmodel .controls > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-attribute-oceanmodel .controls > div > div .form-control,
+.form-attribute-jungmodel .controls > div > div .form-control {
+  width: 3rem;
+}
+/*Forms -> Criteria*/
+.form-criteria {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+}
+.form-criteria button {
+  margin: 0 1rem;
+}
+/*----------------------------------------------------------------*/
+/*Start Page*/
+.startPage {
+  min-height: 100vh;
+  overflow: hidden;
+}
+.startPage .col {
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.startPage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/*Start Page -> Content*/
+.startPage-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 1rem;
+  border: 1px dashed white;
+  background-color: rgba(255, 255, 255, 0.125);
+}
+/*Start Page -> Content -> Title*/
+.startPage-content h1 {
+  margin-bottom: 1rem;
+}
+/*Start Page -> Content -> Subtitle*/
+.startPage-content h6 {
+  margin-bottom: 1rem;
+}
+/*Start Page -> Content -> Link*/
+.startPage-content a {
+  text-decoration: none;
+  color: white;
+  transition: 0.5s all ease-in-out;
+  background-color: white;
+  color: #202020;
+  padding: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.startPage-content a:hover {
+  transform: scale(1.125);
+  background-color: #fa8072;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+/*----------------------------------------------------------------*/
+/*Users*/
+.users {
+  justify-content: center;
+  align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/*Users -> Profile*/
+.users-profile a {
+  text-align: center;
+  background-color: white;
+  color: #202020;
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+  transition: 0.5s all ease-in-out;
+}
+.users-profile a:hover {
+  filter: brightness(87.5%);
+}
+/*----------------------------------------------------------------*/
+/*Projects, World Building, Timeline*/
+.users.row,
+.proj.row,
+.wb.row,
+.tm.row,
+.a.row,
+.exp {
+  padding: 0;
+}
+.users.row,
+.proj.row,
+.wb.row,
+.wb-characters.row,
+.wb-locations.row,
+.wb-objects.row,
+.wb-metaphysics.row,
+.tm-timelines.row,
+.tm-arcs.row,
+.tm-acts.row,
+.tm-actions.row,
+.tm-bookmarks.row,
+.ei-import.row {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  min-height: 100vh;
+}
+.a-bookmarkedactions,
+.a-analysewbs {
+  min-height: 100vh;
+}
+/*Type Selector*/
+.type-selector {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5rem;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #bc8f8f;
+}
+.type-selector a {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  transition: 0.5s all ease-in-out;
+}
+.type-selector a:hover {
+  background-color: rgba(255, 255, 255, 0.125);
+}
+.type-selector a.active {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+/*Operation Sidebar*/
+.operation-sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  width: 2rem;
+  padding: 0;
+  background-color: #404040;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.proj .operation-sidebar {
+  top: 2rem;
+}
+/*Operation Selector*/
+.operation-selector {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background-color: #202020;
+  align-items: flex-start;
+}
+.operation-selector .navbar-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.operation-selector .navbar-nav a {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  padding: 0.25rem;
+  transition: 0.5s all ease-in-out;
+}
+.operation-selector a:hover {
+  background-color: rgba(255, 255, 255, 0.125);
+}
+.operation-selector a.active {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+/*Operation Selector -> Bookmarks*/
+.operation-selector .bookmarks {
+  background-color: #990000;
+}
+.operation-selector .bookmarks.active {
+  background-color: #660000;
+}
+/*Operation Selector -> wbs*/
+.operation-selector .wbs {
+  background-color: #000099;
+}
+.operation-selector .wbs.active {
+  background-color: #000066;
+}
+/*Operation Content*/
+.operation-content {
+  height: 100%;
+}
+/*----------------------------------------------------------------*/
+/*Components*/
+/*Components -> List -> Container*/
+.proj-list-container,
+.wb-list-container,
+.tm-timelines-list-container,
+.tm-arcs-list-container,
+.tm-acts-list-container,
+.tm-actions-list-container,
+.tm-bookmarks-list-container,
+.tm-bookmarksinaction-list-container,
+.tm-wbsinaction-list-container,
+.a-bookmarkedactions-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/*Components -> List -> Container -> Views*/
+/*Components -> List -> Container -> Views -> Line*/
+.tm-arcs-list-view-line .tm-arcs-list-container,
+.tm-acts-list-view-line .tm-acts-list-container,
+.tm-actions-list-view-line .tm-actions-list-container,
+.a-bookmarkedactions-view-line .a-bookmarkedactions-list-container,
+.a-analysewbs-view-line .a-bookmarkedactions-list-container {
+  overflow: hidden;
+}
+.tm-arcs-list-view-line .dnd-container,
+.tm-acts-list-view-line .dnd-container,
+.tm-actions-list-view-line .dnd-container,
+.a-bookmarkedactions-view-line .dnd-container,
+.a-analysewbs-view-line .dnd-container {
+  display: flex;
+  overflow-x: scroll;
+}
+.tm-arcs-list-view-line .dnd-droparea,
+.tm-acts-list-view-line .dnd-droparea,
+.tm-actions-list-view-line .dnd-droparea,
+.a-bookmarkedactions-view-line .dnd-droparea,
+.a-analysewbs-view-line .dnd-droparea {
+  display: block;
+  min-width: 16rem;
+  width: 16rem;
+  max-width: 16rem;
+  min-height: 16rem;
+  height: 16rem;
+  max-height: 16rem;
+}
+/*Components -> List -> Container -> Views -> List*/
+.tm-arcs-list-view-list .dnd-container,
+.tm-acts-list-view-list .dnd-container,
+.tm-actions-list-view-list .dnd-container,
+.a-bookmarkedactions-view-list .dnd-container,
+.a-analysewbs-view-list .dnd-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.tm-arcs-list-view-list .dnd-droparea,
+.tm-acts-list-view-list .dnd-droparea,
+.tm-actions-list-view-list .dnd-droparea,
+.a-bookmarkedactions-view-list .dnd-droparea,
+.a-analysewbs-view-list .dnd-droparea {
+  display: block !important;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-height: 3rem;
+  border: none !important;
+  border-top: 1px dashed rgba(0, 0, 0, 0.25) !important;
+  margin-bottom: 0.25rem;
+}
+.tm-arcs-list-view-list .dnd-item,
+.tm-acts-list-view-list .dnd-item,
+.tm-actions-list-view-list .dnd-item,
+.a-bookmarkedactions-view-list .dnd-item,
+.a-analysewbs-view-list .dnd-item {
+  display: block;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-height: 3rem;
+  height: 3rem;
+  max-height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0.125rem;
+  margin-left: 1rem;
+}
+.tm-arcs-list-view-list .dnd-item > *,
+.tm-acts-list-view-list .dnd-item > *,
+.tm-actions-list-view-list .dnd-item > *,
+.a-bookmarkedactions-view-list .dnd-item > *,
+.a-analysewbs-view-list .dnd-item > * {
+  padding: 0;
+  margin: 0 1rem;
+}
+.tm-arcs-list-view-list .dnd-item:nth-child(1),
+.tm-acts-list-view-list .dnd-item:nth-child(1),
+.tm-actions-list-view-list .dnd-item:nth-child(1),
+.a-bookmarkedactions-view-list .dnd-item:nth-child(1),
+.a-analysewbs-view-list .dnd-item:nth-child(1) {
+  margin-left: 0;
+}
+.tm-arcs-list-view-list .dnd-item:nth-child(even),
+.tm-acts-list-view-list .dnd-item:nth-child(even),
+.tm-actions-list-view-list .dnd-item:nth-child(even),
+.a-bookmarkedactions-view-list .dnd-item:nth-child(even),
+.a-analysewbs-view-list .dnd-item:nth-child(even) {
+  filter: saturate(50%);
+}
+.tm-arcs-list-view-list .dnd-item button,
+.tm-acts-list-view-list .dnd-item button,
+.tm-actions-list-view-list .dnd-item button,
+.a-bookmarkedactions-view-list .dnd-item button,
+.a-analysewbs-view-list .dnd-item button {
+  position: relative;
+  bottom: auto;
+  right: auto;
+  width: 3rem;
+}
+/*Components -> Create, Update, Delete, Close*/
+.users-register,
+.users-postregister,
+.users-login,
+.users-profile,
+.users-logout,
+.users-changeemail,
+.users-changepassword,
+.users-changeusername,
+.proj-create,
+.proj-update,
+.proj-delete,
+.proj-close,
+.wb-characters-create,
+.wb-characters-update,
+.wb-characters-delete,
+.wb-locations-create,
+.wb-locations-update,
+.wb-locations-delete,
+.wb-objects-create,
+.wb-objects-update,
+.wb-objects-delete,
+.wb-metaphysics-create,
+.wb-metaphysics-update,
+.wb-metaphysics-delete,
+.wb-close,
+.tm-timelines-create,
+.tm-timelines-update,
+.tm-timelines-delete,
+.tm-timelines-close,
+.tm-arcs-create,
+.tm-arcs-update,
+.tm-arcs-delete,
+.tm-arcs-close,
+.tm-acts-create,
+.tm-acts-update,
+.tm-acts-delete,
+.tm-acts-close,
+.tm-actions-create,
+.tm-actions-update,
+.tm-actions-delete,
+.tm-actions-close,
+.tm-bookmarks-create,
+.tm-bookmarks-update,
+.tm-bookmarks-delete,
+.tm-bookmarks-close,
+.tm-bookmarksinaction-create,
+.tm-bookmarksinaction-delete,
+.tm-wbsinaction-create,
+.tm-wbsinaction-delete,
+.a-bookmarkedactions,
+.a-analysewbs,
+.exp,
+.ei-import-all {
+  padding: 1rem;
+}
+.users-register form,
+.users-postregister form,
+.users-login form,
+.users-profile form,
+.users-logout form,
+.users-changeemail form,
+.users-changepassword form,
+.users-changeusername form,
+.proj-create form,
+.proj-update form,
+.proj-delete form,
+.proj-close form,
+.wb-characters-create form,
+.wb-characters-update form,
+.wb-characters-delete form,
+.wb-locations-create form,
+.wb-locations-update form,
+.wb-locations-delete form,
+.wb-objects-create form,
+.wb-objects-update form,
+.wb-objects-delete form,
+.wb-metaphysics-create form,
+.wb-metaphysics-update form,
+.wb-metaphysics-delete form,
+.wb-close div,
+.tm-timelines-create form,
+.tm-timelines-update form,
+.tm-timelines-delete form,
+.tm-timelines-close form,
+.tm-arcs-create form,
+.tm-arcs-update form,
+.tm-arcs-delete form,
+.tm-arcs-close form,
+.tm-acts-create form,
+.tm-acts-update form,
+.tm-acts-delete form,
+.tm-acts-close form,
+.tm-actions-create form,
+.tm-actions-update form,
+.tm-actions-delete form,
+.tm-actions-close form,
+.tm-bookmarks-create form,
+.tm-bookmarks-update form,
+.tm-bookmarks-delete form,
+.tm-bookmarks-close form,
+.tm-bookmarksinaction-create form,
+.tm-bookmarksinaction-delete form,
+.tm-wbsinaction-create form,
+.tm-wbsinaction-delete form,
+.a-bookmarkedactions form,
+.a-analysewbs form,
+.ei-import-all form {
+  background-color: #bc8f8f;
+  padding: 1rem 1rem 0.01rem 1rem;
+  width: 100%;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+/*Components -> Close*/
+.proj-close .form-attribute,
+.tm-timelines-close .form-attribute,
+.tm-arcs-close .form-attribute,
+.tm-acts-close .form-attribute,
+.tm-actions-close .form-attribute,
+.tm-bookmarks-close .form-attribute {
+  margin-bottom: 1rem;
+}
+.wb-close div {
+  padding: 0 1rem 1rem 1rem !important;
+}
+/*Components -> Entry*/
+.proj-entry,
+.wb-entry,
+.tm-entry,
+.a-entry {
+  min-width: 20%;
+  width: 20%;
+  max-width: 20%;
+  margin: 1rem;
+  background-color: #bc8f8f;
+  border-radius: 0;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.proj-entry.active,
+.wb-entry.active,
+.tm-entry.active,
+.dnd-item.active,
+.a-entry.active {
+  background-color: #fa8072;
+}
+/*Components -> Entry -> Extra Information*/
+.dnd-item b {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center;
+  font-size: 0.75rem;
+}
+/*Components -> Entry -> Title*/
+.proj-entry .card-title,
+.wb-entry .card-title,
+.tm-entry .card-title,
+.dnd-item h5,
+.a-entry .card-title {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center;
+  border-bottom: 1px dashed white;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+/*Components -> Entry -> Description*/
+.proj-entry .card-text,
+.wb-entry .card-text,
+.tm-entry .card-text,
+.dnd-item p,
+.a-entry .card-text {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+}
+/*Components -> Entry -> Button*/
+.proj-entry button,
+.wb-entry button,
+.tm-entry button,
+.dnd-item button,
+.a-entry button {
+  float: right;
+  font-size: 0.75rem;
+  border-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+/*----------------------------------------------------------------*/
+/*World Building*/
+/*World Building -> Characters, Locations, Objects, Metaphysics -> Delete*/
+.wb-characters-delete form,
+.wb-locations-delete form,
+.wb-objects-delete form,
+.wb-metaphysics-delete form,
+.ei-import-all form {
+  padding: 1rem;
+}
+/*----------------------------------------------------------------*/
+/*Time*/
+/*Time -> Breadcrumb*/
+.tm-breadcrumb {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 1rem 0 0.5rem 0;
+}
+/*Time -> Breadcrumb -> Timeline, Arc, Arc, Action*/
+.tm-breadcrumb-timeline,
+.tm-breadcrumb-arc,
+.tm-breadcrumb-act,
+.tm-breadcrumb-action {
+  padding: 0 1rem 0 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+}
+.tm-breadcrumb-timeline {
+  border-top-left-radius: 0.25rem;
+}
+.tm-breadcrumb-action {
+  border-bottom-right-radius: 0.25rem;
+}
+/*Time -> Breadcrumb -> Span*/
+.tm-breadcrumb span {
+  font-size: 0.75rem;
+  padding-right: 0.5rem;
+}
+/*Time -> Breadcrumb -> Small*/
+.tm-breadcrumb small {
+  padding-left: 0.5rem;
+}
+/*Timeline -> Breadcrumb -> After*/
+.tm-breadcrumb-timeline::after,
+.tm-breadcrumb-arc::after,
+.tm-breadcrumb-act::after {
+  content: ">";
+  position: absolute;
+  right: 0.25rem;
+  font-size: 0.75rem;
+}
+/*Timeline -> Breadcrumb -> Active*/
+.tm-breadcrumb-timeline.active,
+.tm-breadcrumb-arc.active,
+.tm-breadcrumb-act.active,
+.tm-breadcrumb-action.active {
+  background-color: #fa8072;
+  color: white;
+}
+/*Time -> View*/
+.tm-views {
+  display: flex;
+  align-items: center;
+}
+.tm-views p {
+  margin: 0;
+  padding-right: 1rem;
+}
+/*----------------------------------------------------------------*/
+/*Dnd*/
+/*Dnd -> Container*/
+.dnd-container {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  grid-gap: 0.125rem;
+}
+/*Dnd -> Drop Area*/
+.dnd-container .dnd-droparea {
+  display: grid;
+  grid-gap: 0.125rem;
+  border-right: 1px dashed rgba(0, 0, 0, 0.25);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.25);
+}
+/*Dnd -> Item*/
+.dnd-item {
+  border-radius: 0.5rem 0 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #bc8f8f;
+  color: white;
+  padding: 0.5rem;
+  position: relative;
+}
+.dnd-item button {
+  align-self: end;
+}
+/*----------------------------------------------------------------*/
+/*Analyser*/
+.a-bookmarkedactions-list-container,
+.a-analysewbs-list-container {
+  padding-top: 1rem;
+}
+/*----------------------------------------------------------------*/
+/*Export*/
+.exp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/*Export -> Controls*/
+.exp-controls {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.25);
+}
+/*Export -> Container*/
+.exp-container {
+  width: 80%;
+}
+.exp-title,
+.exp-subtitle,
+.exp-label,
+.exp-content {
+  font-family: "Times New Roman", Times, serif;
+}
+.exp-label {
+  font-size: 0.75rem;
+  color: #808080;
+}
+/*----------------------------------------------------------------*/
+/*----------------------------------------------------------------*/
+/*----------------------------------------------------------------*/
+@media only screen and (max-width: 600px) {
+  /*Mobile*/
+  /*Mobile -> Navigation Menu*/
+  #navigation-menu {
+    background-color: rgba(0, 0, 0, 0.875);
   }
-  to {
-    transform: rotate(360deg);
+  .navigation-menu-links {
+    padding-top: 1rem;
+  }
+  /*Mobile -> Start Page*/
+  .startPage {
+    min-height: 100vh;
+  }
+  .startPage img {
+    left: -75%;
+    height: 100vh;
+    width: auto;
+  }
+  /*Mobile -> Footer*/
+  .footer {
+    height: auto;
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-links .nav-item {
+    display: block;
+  }
+  /*Mobile -> Projects, World Building, Timeline*/
+  .users.row,
+  .proj.row,
+  .wb-characters.row,
+  .wb-locations.row,
+  .wb-objects.row,
+  .wb-metaphysics.row,
+  .tm-timelines.row,
+  .tm-arcs.row,
+  .tm-acts.row,
+  .tm-actions.row,
+  .tm-bookmarks.row,
+  .ei-import.row {
+    padding-top: 1rem;
+  }
+  /*Mobile -> Type Selector*/
+  .type-selector {
+    flex-direction: column;
+  }
+  /*Mobile -> Operation Selector*/
+  .operation-sidebar {
+    width: 3rem;
+  }
+  .operation-selector .navbar-nav a {
+    padding: 1rem 0.25rem;
+  }
+  /*Mobile -> Components -> Entry*/
+  .proj-entry,
+  .wb-entry,
+  .tm-entry,
+  .a-entry {
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+  }
+  /*Mobile -> Components -> Entry -> Button*/
+  .proj-entry button,
+  .wb-entry button,
+  .tm-entry button,
+  .dnd-item button,
+  .a-entry button {
+    float: left;
+    font-size: 0.75rem;
+  }
+  /*Mobile -> Time*/
+  /*Mobile -> Time -> Breadcrumb*/
+  .tm-breadcrumb {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    margin: 1rem 0 0.5rem 0;
+  }
+  /*Mobile -> Dnd*/
+  /*Mobile -> Dnd -> Container*/
+  .dnd-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(50, 1fr);
+    grid-gap: 0;
+  }
+  /*Dnd -> Drop Area*/
+  .dnd-container .dnd-droparea {
+    grid-gap: 0;
+  }
+  /*Mobile -> Dnd -> Item*/
+  .dnd-item h5 {
+    font-size: 1rem;
+  }
+  .dnd-item p {
+    display: none;
+  }
+  /*Mobile -> Components -> List -> Container -> Views*/
+  /*Mobile -> Components -> List -> Container -> Views -> Line*/
+  .tm-arcs-list-view-line .dnd-container,
+  .tm-acts-list-view-line .dnd-container,
+  .tm-actions-list-view-line .dnd-container,
+  .a-bookmarkedactions-view-line .dnd-container,
+  .a-analysewbs-view-line .dnd-container {
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+  }
+  .tm-arcs-list-view-line .dnd-droparea,
+  .tm-acts-list-view-line .dnd-droparea,
+  .tm-actions-list-view-line .dnd-droparea,
+  .a-bookmarkedactions-view-line .dnd-droparea,
+  .a-analysewbs-view-line .dnd-droparea {
+    min-width: 8rem;
+    width: 8rem;
+    max-width: 8rem;
+    min-height: 8rem;
+    height: 8rem;
+    max-height: 8rem;
+  }
+  /*Mobile -> Components -> List -> Container -> Views -> List*/
+  .tm-arcs-list-view-list .dnd-item h5,
+  .tm-acts-list-view-list .dnd-item h5,
+  .tm-actions-list-view-list .dnd-item h5,
+  .a-bookmarkedactions-view-list .dnd-item h5,
+  .a-analysewbs-view-list .dnd-item h5 {
+    font-size: 0.875rem;
   }
 }
