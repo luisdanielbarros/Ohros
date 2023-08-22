@@ -43,16 +43,16 @@ const TMActionUpdate = () => {
           description: Yup.string(),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "updateaction");
           formData.append("access_token", accessToken);
           formData.append("action_id", Action.actionId);
           formData.append("realtime", Action.Time);
           formData.append("screentime", Action.Time);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
-          var reduxDispatchObject = {};
+          let reduxDispatchObject = {};
           formData.forEach((value, key) =>
             value === undefined
               ? (reduxDispatchObject[key] = "")

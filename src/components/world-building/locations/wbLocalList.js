@@ -20,7 +20,7 @@ const WBLocalList = () => {
   const navigate = useNavigate();
   //Fetch the data
   useEffect(() => {
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("action", "viewlocations");
     formData.append("access_token", accessToken);
     Axios.post("/", formData)

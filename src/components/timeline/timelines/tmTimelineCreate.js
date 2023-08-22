@@ -28,15 +28,14 @@ const TMTimelineCreate = () => {
           timename: Yup.string()
             .required("Required")
             .max(64, "Exceeded maximum of 64 digits"),
-          summary: Yup.string()
-          .max(128, "Exceeded maximum of 128 digits"),
+          summary: Yup.string().max(128, "Exceeded maximum of 128 digits"),
           description: Yup.string(),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "createtimeline");
           formData.append("access_token", accessToken);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
           Axios.post("/", formData)

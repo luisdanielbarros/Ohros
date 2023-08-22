@@ -43,11 +43,11 @@ const UsersChangeUsername = () => {
             .max(24, "Exceeded maximum of 24 digits"),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "change_username");
           formData.append("access_token", accessToken);
           formData.append("user_id", User.userId);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
           Axios.post("/", formData)

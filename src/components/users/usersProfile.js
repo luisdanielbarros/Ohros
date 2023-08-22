@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Col, Form, Button } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { notificationActions } from "../store/notificationSlice";

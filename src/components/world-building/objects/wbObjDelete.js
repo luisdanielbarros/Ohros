@@ -31,11 +31,11 @@ const WBObjDelete = () => {
           projpass: Yup.string().required("Required"),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "deleteobject");
           formData.append("access_token", accessToken);
           formData.append("wb_id", Id);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
           Axios.post("/", formData)

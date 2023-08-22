@@ -134,7 +134,7 @@ const EIImport = () => {
   //Create WB
   const createWB = (Type, jsonData) => {
     return new Promise((resolve) => {
-      var formData = new FormData();
+      let formData = new FormData();
       //General
       formData.append("access_token", accessToken);
       formData.append("concept", jsonData.Concept);
@@ -217,7 +217,7 @@ const EIImport = () => {
   //Create Time
   const createTime = (Type, jsonData) => {
     return new Promise((resolve) => {
-      var formData = new FormData();
+      let formData = new FormData();
       //General
       formData.append("access_token", accessToken);
       formData.append("summary", jsonData.Summary);
@@ -462,7 +462,7 @@ const EIImport = () => {
   //Create Bookmark
   const createBookmark = (Type, jsonData) => {
     return new Promise((resolve) => {
-      var formData = new FormData();
+      let formData = new FormData();
       formData.append("action", "createbookmark");
       formData.append("access_token", accessToken);
       formData.append("bookmarkname", jsonData.Title);
@@ -518,7 +518,7 @@ const EIImport = () => {
   };
   //Get Structure's Id by Name
   const getStructuresIdByName = async (Structure, Name) => {
-    var formData = new FormData();
+    let formData = new FormData();
     //General
     formData.append("access_token", accessToken);
     //Timeline

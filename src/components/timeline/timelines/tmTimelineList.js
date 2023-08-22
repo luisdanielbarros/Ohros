@@ -21,7 +21,7 @@ const TMTimelineList = () => {
   const navigate = useNavigate();
   //Fetch the data
   useEffect(() => {
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("action", "viewtimelines");
     formData.append("access_token", accessToken);
     Axios.post("/", formData)

@@ -31,7 +31,7 @@ const UsersLogout = () => {
         enableReinitialize
         validationSchema={Yup.object({})}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "logout");
           formData.append("access_token", accessToken);
           Axios.post("/", formData)

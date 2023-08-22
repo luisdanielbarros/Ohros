@@ -21,7 +21,7 @@ const TMBookmarkList = () => {
   const navigate = useNavigate();
   //Fetch the data
   useEffect(() => {
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("action", "viewbookmarks");
     formData.append("access_token", accessToken);
     formData.append("project_id", projectId);

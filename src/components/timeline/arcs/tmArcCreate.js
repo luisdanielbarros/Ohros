@@ -33,11 +33,11 @@ const TMArcCreate = () => {
           description: Yup.string(),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "createarc");
           formData.append("access_token", accessToken);
           formData.append("timeline_id", timelineId);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
           Axios.post("/", formData)

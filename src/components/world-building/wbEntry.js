@@ -12,28 +12,7 @@ import { actActions } from "../store/actSlice";
 import { actionActions } from "../store/actionSlice";
 import { bookmarkActions } from "../store/bookmarkSlice";
 import { Truncate } from "../general/Util";
-const WBEntry = ({
-  Type,
-  Id,
-  Concept,
-  reasonOfConcept,
-  Title,
-  Summary,
-  Description,
-  Cause,
-  Purpose,
-  Myth,
-  jungModel,
-  oceanModel,
-  Ego,
-  Complexes,
-  Persona,
-  Anima,
-  Shadow,
-  Self,
-  psychicQuirks,
-  physicQuirks,
-}) => {
+const WBEntry = ({ Type, Id, Title, Summary }) => {
   const accessToken = useSelector((state) => state.user.accessToken);
   const wbId = useSelector((state) => state.worldBuilding.Id);
   const dispatch = useDispatch();
@@ -54,275 +33,283 @@ const WBEntry = ({
             onClick={() => {
               switch (Type) {
                 case "Character":
-                  var formData = new FormData();
-                  formData.append("action", "viewcharacter");
-                  formData.append("access_token", accessToken);
-                  formData.append("wb_id", Id);
-                  Axios.post("/", formData)
-                    .then((response) => {
-                      if (response.status === 200) {
-                        let responseData = response.data.content;
-                        dispatch(
-                          worldBuildingActions.openCharacter({
-                            Type: "Character",
-                            Id: responseData.id,
-                            Concept: responseData.concept,
-                            reasonOfConcept: responseData.reasonofconcept,
-                            Title: responseData.title,
-                            Summary: responseData.summary,
-                            Description: responseData.description,
-                            Cause: responseData.cause,
-                            Purpose: responseData.purpose,
-                            Myth: responseData.myth,
-                            Character: {
-                              oceanModel: responseData.oceanmodel,
-                              jungModel: responseData.jungmodel,
-                              Ego: responseData.ego,
-                              Complexes: responseData.complexes,
-                              Persona: responseData.persona,
-                              Anima: responseData.anima,
-                              Shadow: responseData.shadow,
-                              Self: responseData.self,
-                              psychicQuirks: responseData.psychicquirks,
-                              physicQuirks: responseData.physicquirks,
-                            },
-                            Location: {},
-                            Object: {},
-                            Metaphysic: {},
-                          })
-                        );
-                      }
-                    })
-                    .catch((error) => {
-                      switch (error.response.data.messageTitle) {
-                        case "Project Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          navigate("/projects/list");
-                          break;
-                        case "User Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          dispatch(userAuthActions.logout());
-                          navigate("/users/login");
-                          break;
-                        default:
+                  {
+                    let formData = new FormData();
+                    formData.append("action", "viewcharacter");
+                    formData.append("access_token", accessToken);
+                    formData.append("wb_id", Id);
+                    Axios.post("/", formData)
+                      .then((response) => {
+                        if (response.status === 200) {
+                          let responseData = response.data.content;
                           dispatch(
-                            notificationActions.add({
-                              Title: error.response.data.messageTitle,
-                              Message: error.response.data.message,
-                              closeButton: "Close",
+                            worldBuildingActions.openCharacter({
+                              Type: "Character",
+                              Id: responseData.id,
+                              Concept: responseData.concept,
+                              reasonOfConcept: responseData.reasonofconcept,
+                              Title: responseData.title,
+                              Summary: responseData.summary,
+                              Description: responseData.description,
+                              Cause: responseData.cause,
+                              Purpose: responseData.purpose,
+                              Myth: responseData.myth,
+                              Character: {
+                                oceanModel: responseData.oceanmodel,
+                                jungModel: responseData.jungmodel,
+                                Ego: responseData.ego,
+                                Complexes: responseData.complexes,
+                                Persona: responseData.persona,
+                                Anima: responseData.anima,
+                                Shadow: responseData.shadow,
+                                Self: responseData.self,
+                                psychicQuirks: responseData.psychicquirks,
+                                physicQuirks: responseData.physicquirks,
+                              },
+                              Location: {},
+                              Object: {},
+                              Metaphysic: {},
                             })
                           );
-                          break;
-                      }
-                      console.log(error);
-                    });
+                        }
+                      })
+                      .catch((error) => {
+                        switch (error.response.data.messageTitle) {
+                          case "Project Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            navigate("/projects/list");
+                            break;
+                          case "User Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            dispatch(userAuthActions.logout());
+                            navigate("/users/login");
+                            break;
+                          default:
+                            dispatch(
+                              notificationActions.add({
+                                Title: error.response.data.messageTitle,
+                                Message: error.response.data.message,
+                                closeButton: "Close",
+                              })
+                            );
+                            break;
+                        }
+                        console.log(error);
+                      });
+                  }
                   break;
                 case "Location":
-                  var formData = new FormData();
-                  formData.append("action", "viewlocation");
-                  formData.append("access_token", accessToken);
-                  formData.append("wb_id", Id);
-                  Axios.post("/", formData)
-                    .then((response) => {
-                      if (response.status === 200) {
-                        let responseData = response.data.content;
-                        dispatch(
-                          worldBuildingActions.openDefault({
-                            Type: "Location",
-                            Id: responseData.id,
-                            Concept: responseData.concept,
-                            reasonOfConcept: responseData.reasonofconcept,
-                            Title: responseData.title,
-                            Summary: responseData.summary,
-                            Description: responseData.description,
-                            Cause: responseData.cause,
-                            Purpose: responseData.purpose,
-                            Myth: responseData.myth,
-                            Character: {},
-                            Location: {},
-                            Object: {},
-                            Metaphysic: {},
-                          })
-                        );
-                      }
-                    })
-                    .catch((error) => {
-                      switch (error.response.data.messageTitle) {
-                        case "Project Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          navigate("/projects/list");
-                          break;
-                        case "User Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          dispatch(userAuthActions.logout());
-                          navigate("/users/login");
-                          break;
-                        default:
+                  {
+                    let formData = new FormData();
+                    formData.append("action", "viewlocation");
+                    formData.append("access_token", accessToken);
+                    formData.append("wb_id", Id);
+                    Axios.post("/", formData)
+                      .then((response) => {
+                        if (response.status === 200) {
+                          let responseData = response.data.content;
                           dispatch(
-                            notificationActions.add({
-                              Title: error.response.data.messageTitle,
-                              Message: error.response.data.message,
-                              closeButton: "Close",
+                            worldBuildingActions.openDefault({
+                              Type: "Location",
+                              Id: responseData.id,
+                              Concept: responseData.concept,
+                              reasonOfConcept: responseData.reasonofconcept,
+                              Title: responseData.title,
+                              Summary: responseData.summary,
+                              Description: responseData.description,
+                              Cause: responseData.cause,
+                              Purpose: responseData.purpose,
+                              Myth: responseData.myth,
+                              Character: {},
+                              Location: {},
+                              Object: {},
+                              Metaphysic: {},
                             })
                           );
-                          break;
-                      }
-                      console.log(error);
-                    });
+                        }
+                      })
+                      .catch((error) => {
+                        switch (error.response.data.messageTitle) {
+                          case "Project Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            navigate("/projects/list");
+                            break;
+                          case "User Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            dispatch(userAuthActions.logout());
+                            navigate("/users/login");
+                            break;
+                          default:
+                            dispatch(
+                              notificationActions.add({
+                                Title: error.response.data.messageTitle,
+                                Message: error.response.data.message,
+                                closeButton: "Close",
+                              })
+                            );
+                            break;
+                        }
+                        console.log(error);
+                      });
+                  }
                   break;
                 case "Object":
-                  var formData = new FormData();
-                  formData.append("action", "viewobject");
-                  formData.append("access_token", accessToken);
-                  formData.append("wb_id", Id);
-                  Axios.post("/", formData)
-                    .then((response) => {
-                      if (response.status === 200) {
-                        let responseData = response.data.content;
-                        dispatch(
-                          worldBuildingActions.openDefault({
-                            Type: "Object",
-                            Id: responseData.id,
-                            Concept: responseData.concept,
-                            reasonOfConcept: responseData.reasonofconcept,
-                            Title: responseData.title,
-                            Summary: responseData.summary,
-                            Description: responseData.description,
-                            Cause: responseData.cause,
-                            Purpose: responseData.purpose,
-                            Myth: responseData.myth,
-                            Character: {},
-                            Location: {},
-                            Object: {},
-                            Metaphysic: {},
-                          })
-                        );
-                      }
-                    })
-                    .catch((error) => {
-                      switch (error.response.data.messageTitle) {
-                        case "Project Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          navigate("/projects/list");
-                          break;
-                        case "User Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          dispatch(userAuthActions.logout());
-                          navigate("/users/login");
-                          break;
-                        default:
+                  {
+                    let formData = new FormData();
+                    formData.append("action", "viewobject");
+                    formData.append("access_token", accessToken);
+                    formData.append("wb_id", Id);
+                    Axios.post("/", formData)
+                      .then((response) => {
+                        if (response.status === 200) {
+                          let responseData = response.data.content;
                           dispatch(
-                            notificationActions.add({
-                              Title: error.response.data.messageTitle,
-                              Message: error.response.data.message,
-                              closeButton: "Close",
+                            worldBuildingActions.openDefault({
+                              Type: "Object",
+                              Id: responseData.id,
+                              Concept: responseData.concept,
+                              reasonOfConcept: responseData.reasonofconcept,
+                              Title: responseData.title,
+                              Summary: responseData.summary,
+                              Description: responseData.description,
+                              Cause: responseData.cause,
+                              Purpose: responseData.purpose,
+                              Myth: responseData.myth,
+                              Character: {},
+                              Location: {},
+                              Object: {},
+                              Metaphysic: {},
                             })
                           );
-                          break;
-                      }
-                      console.log(error);
-                    });
+                        }
+                      })
+                      .catch((error) => {
+                        switch (error.response.data.messageTitle) {
+                          case "Project Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            navigate("/projects/list");
+                            break;
+                          case "User Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            dispatch(userAuthActions.logout());
+                            navigate("/users/login");
+                            break;
+                          default:
+                            dispatch(
+                              notificationActions.add({
+                                Title: error.response.data.messageTitle,
+                                Message: error.response.data.message,
+                                closeButton: "Close",
+                              })
+                            );
+                            break;
+                        }
+                        console.log(error);
+                      });
+                  }
                   break;
                 case "Metaphysic":
-                  var formData = new FormData();
-                  formData.append("action", "viewmetaphysic");
-                  formData.append("access_token", accessToken);
-                  formData.append("wb_id", Id);
-                  Axios.post("/", formData)
-                    .then((response) => {
-                      if (response.status === 200) {
-                        let responseData = response.data.content;
-                        dispatch(
-                          worldBuildingActions.openDefault({
-                            Type: "Metaphysic",
-                            Id: responseData.id,
-                            Concept: responseData.concept,
-                            reasonOfConcept: responseData.reasonofconcept,
-                            Title: responseData.title,
-                            Summary: responseData.summary,
-                            Description: responseData.description,
-                            Cause: responseData.cause,
-                            Purpose: responseData.purpose,
-                            Myth: responseData.myth,
-                            Character: {},
-                            Location: {},
-                            Object: {},
-                            Metaphysic: {},
-                          })
-                        );
-                      }
-                    })
-                    .catch((error) => {
-                      switch (error.response.data.messageTitle) {
-                        case "Project Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          navigate("/projects/list");
-                          break;
-                        case "User Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          dispatch(userAuthActions.logout());
-                          navigate("/users/login");
-                          break;
-                        default:
+                  {
+                    let formData = new FormData();
+                    formData.append("action", "viewmetaphysic");
+                    formData.append("access_token", accessToken);
+                    formData.append("wb_id", Id);
+                    Axios.post("/", formData)
+                      .then((response) => {
+                        if (response.status === 200) {
+                          let responseData = response.data.content;
                           dispatch(
-                            notificationActions.add({
-                              Title: error.response.data.messageTitle,
-                              Message: error.response.data.message,
-                              closeButton: "Close",
+                            worldBuildingActions.openDefault({
+                              Type: "Metaphysic",
+                              Id: responseData.id,
+                              Concept: responseData.concept,
+                              reasonOfConcept: responseData.reasonofconcept,
+                              Title: responseData.title,
+                              Summary: responseData.summary,
+                              Description: responseData.description,
+                              Cause: responseData.cause,
+                              Purpose: responseData.purpose,
+                              Myth: responseData.myth,
+                              Character: {},
+                              Location: {},
+                              Object: {},
+                              Metaphysic: {},
                             })
                           );
-                          break;
-                      }
-                      console.log(error);
-                    });
+                        }
+                      })
+                      .catch((error) => {
+                        switch (error.response.data.messageTitle) {
+                          case "Project Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            navigate("/projects/list");
+                            break;
+                          case "User Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            dispatch(userAuthActions.logout());
+                            navigate("/users/login");
+                            break;
+                          default:
+                            dispatch(
+                              notificationActions.add({
+                                Title: error.response.data.messageTitle,
+                                Message: error.response.data.message,
+                                closeButton: "Close",
+                              })
+                            );
+                            break;
+                        }
+                        console.log(error);
+                      });
+                  }
                   break;
                 default:
                   break;

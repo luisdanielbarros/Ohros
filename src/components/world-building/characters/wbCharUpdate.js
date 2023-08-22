@@ -20,23 +20,23 @@ import JungModel from "./jungModel";
 const WBCharUpdate = () => {
   const accessToken = useSelector((state) => state.user.accessToken);
   const Character = useSelector((state) => state.worldBuilding);
-  let dynamicVar = Character.Character.oceanModel;
-  dynamicVar = dynamicVar.split(";");
-  const varOceanConfig = {
-    Openness: dynamicVar[0],
-    Conscientiousness: dynamicVar[1],
-    Extraversion: dynamicVar[2],
-    Agreeableness: dynamicVar[3],
-    Neuroticism: dynamicVar[4],
+  let dynamiclet = Character.Character.oceanModel;
+  dynamiclet = dynamiclet.split(";");
+  const letOceanConfig = {
+    Openness: dynamiclet[0],
+    Conscientiousness: dynamiclet[1],
+    Extraversion: dynamiclet[2],
+    Agreeableness: dynamiclet[3],
+    Neuroticism: dynamiclet[4],
   };
-  dynamicVar = Character.Character.jungModel;
-  dynamicVar = dynamicVar.split(";");
-  const varJungConfig = {
-    aTExtraversion: dynamicVar[0],
-    fTThinking: dynamicVar[1],
-    fTFeeling: dynamicVar[2],
-    fTIntuition: dynamicVar[3],
-    fTSensation: dynamicVar[4],
+  dynamiclet = Character.Character.jungModel;
+  dynamiclet = dynamiclet.split(";");
+  const letJungConfig = {
+    aTExtraversion: dynamiclet[0],
+    fTThinking: dynamiclet[1],
+    fTFeeling: dynamiclet[2],
+    fTIntuition: dynamiclet[3],
+    fTSensation: dynamiclet[4],
   };
   const formData = {
     concept: Character.Concept,
@@ -58,8 +58,8 @@ const WBCharUpdate = () => {
   };
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [oceanConfig, setOceanConfig] = useState(varOceanConfig);
-  const [jungConfig, setJungConfig] = useState(varJungConfig);
+  const [oceanConfig, setOceanConfig] = useState(letOceanConfig);
+  const [jungConfig, setJungConfig] = useState(letJungConfig);
   return (
     <Col md="12" className="wb-characters-update">
       <Formik
@@ -86,7 +86,7 @@ const WBCharUpdate = () => {
           physicquirks: Yup.string(),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "updatecharacter");
           formData.append("access_token", accessToken);
           formData.append("wb_id", Character.Id);
@@ -112,13 +112,13 @@ const WBCharUpdate = () => {
             ";" +
             jungConfig.fTSensation;
           formData.append("jungmodel", stringJungConfig);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
           Axios.post("/", formData)
             .then((response) => {
               if (response.status === 200) {
-                var reduxDispatchObject = {};
+                let reduxDispatchObject = {};
                 formData.forEach((value, key) =>
                   value === undefined
                     ? (reduxDispatchObject[key] = "")
@@ -235,7 +235,7 @@ const WBCharUpdate = () => {
               {loadFormAttribute(
                 "myth",
                 "Myth",
-                "What myth is this person atdynamicVarting to fulfill inside their heads?"
+                "What myth is this person atdynamicletting to fulfill inside their heads?"
               )}
             </Tab>
             {/*OCEAN Model*/}

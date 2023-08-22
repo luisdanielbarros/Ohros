@@ -23,7 +23,7 @@ const TMArcList = () => {
   //Fetch the data
   useEffect(() => {
     if (!Timeline.isInTimeline) return;
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("action", "viewarcs");
     formData.append("access_token", accessToken);
     formData.append("timeline_id", Timeline.timelineId);

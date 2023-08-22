@@ -14,7 +14,7 @@ const UsersConfirmAccount = () => {
     if (isLoggedIn) navigate("/users/logout");
     if (id === undefined || code === undefined || hasRequested) return;
     console.log("ran");
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("action", "confirm_account");
     formData.append("user_id", id);
     formData.append("code", code);

@@ -26,7 +26,7 @@ const TMActionRelBookmark = () => {
   const navigate = useNavigate();
   //Fetch the data
   useEffect(() => {
-    var formData2 = new FormData();
+    let formData2 = new FormData();
     formData2.append("action", "viewbookmarks");
     formData2.append("access_token", accessToken);
     Axios.post("/", formData2)
@@ -88,7 +88,7 @@ const TMActionRelBookmark = () => {
           formData.append("action", "relatebookmarktoaction");
           formData.append("access_token", accessToken);
           formData.append("action_id", actionId);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
           Axios.post("/", formData)

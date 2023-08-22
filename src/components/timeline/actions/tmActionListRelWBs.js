@@ -21,7 +21,7 @@ const TMActionListRelWBs = () => {
   const navigate = useNavigate();
   //Fetch the data
   useEffect(() => {
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("action", "viewwbsinaction");
     formData.append("access_token", accessToken);
     formData.append("action_id", actionId);

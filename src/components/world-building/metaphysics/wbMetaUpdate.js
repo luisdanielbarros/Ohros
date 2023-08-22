@@ -47,14 +47,14 @@ const WBMetaUpdate = () => {
           myth: Yup.string(),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "updatemetaphysic");
           formData.append("access_token", accessToken);
           formData.append("wb_id", Metaphysic.Id);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
-          var reduxDispatchObject = {};
+          let reduxDispatchObject = {};
           formData.forEach((value, key) =>
             value === undefined
               ? (reduxDispatchObject[key] = "")

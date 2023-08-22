@@ -44,118 +44,122 @@ const TMEntry = ({ Type, Id, Title, Description }) => {
             onClick={() => {
               switch (Type) {
                 case "Timeline":
-                  var formData = new FormData();
-                  formData.append("action", "viewtimeline");
-                  formData.append("access_token", accessToken);
-                  formData.append("timeline_id", Id);
-                  Axios.post("/", formData)
-                    .then((response) => {
-                      if (response.status === 200) {
-                        let responseData = response.data.content;
-                        dispatch(bookmarkActions.close({}));
-                        dispatch(actionActions.close({}));
-                        dispatch(actActions.close({}));
-                        dispatch(arcActions.close({}));
-                        dispatch(
-                          timelineActions.open({
-                            timelineId: responseData.timelineId,
-                            Timename: responseData.Timename,
-                            Summary: responseData.Summary,
-                            Description: responseData.Description,
-                          })
-                        );
-                      }
-                    })
-                    .catch((error) => {
-                      switch (error.response.data.messageTitle) {
-                        case "Project Token Check Failure.":
+                  {
+                    let formData = new FormData();
+                    formData.append("action", "viewtimeline");
+                    formData.append("access_token", accessToken);
+                    formData.append("timeline_id", Id);
+                    Axios.post("/", formData)
+                      .then((response) => {
+                        if (response.status === 200) {
+                          let responseData = response.data.content;
                           dispatch(bookmarkActions.close({}));
                           dispatch(actionActions.close({}));
                           dispatch(actActions.close({}));
                           dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          navigate("/projects/list");
-                          break;
-                        case "User Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          dispatch(userAuthActions.logout());
-                          navigate("/users/login");
-                          break;
-                        default:
                           dispatch(
-                            notificationActions.add({
-                              Title: error.response.data.messageTitle,
-                              Message: error.response.data.message,
-                              closeButton: "Close",
+                            timelineActions.open({
+                              timelineId: responseData.timelineId,
+                              Timename: responseData.Timename,
+                              Summary: responseData.Summary,
+                              Description: responseData.Description,
                             })
                           );
-                          break;
-                      }
-                      console.log(error);
-                    });
+                        }
+                      })
+                      .catch((error) => {
+                        switch (error.response.data.messageTitle) {
+                          case "Project Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            navigate("/projects/list");
+                            break;
+                          case "User Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            dispatch(userAuthActions.logout());
+                            navigate("/users/login");
+                            break;
+                          default:
+                            dispatch(
+                              notificationActions.add({
+                                Title: error.response.data.messageTitle,
+                                Message: error.response.data.message,
+                                closeButton: "Close",
+                              })
+                            );
+                            break;
+                        }
+                        console.log(error);
+                      });
+                  }
                   break;
                 case "Bookmark":
-                  var formData = new FormData();
-                  formData.append("action", "viewbookmark");
-                  formData.append("access_token", accessToken);
-                  formData.append("bookmark_id", Id);
-                  Axios.post("/", formData)
-                    .then((response) => {
-                      if (response.status === 200) {
-                        let responseData = response.data.content;
-                        dispatch(
-                          bookmarkActions.open({
-                            bookmarkId: responseData.bookmarkId,
-                            Bookmarkname: responseData.Bookmarkname,
-                            Summary: responseData.Summary,
-                            Description: responseData.Description,
-                          })
-                        );
-                      }
-                    })
-                    .catch((error) => {
-                      switch (error.response.data.messageTitle) {
-                        case "Project Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          navigate("/projects/list");
-                          break;
-                        case "User Token Check Failure.":
-                          dispatch(bookmarkActions.close({}));
-                          dispatch(actionActions.close({}));
-                          dispatch(actActions.close({}));
-                          dispatch(arcActions.close({}));
-                          dispatch(timelineActions.close({}));
-                          dispatch(worldBuildingActions.close({}));
-                          dispatch(projAuthActions.close());
-                          dispatch(userAuthActions.logout());
-                          navigate("/users/login");
-                          break;
-                        default:
+                  {
+                    let formData = new FormData();
+                    formData.append("action", "viewbookmark");
+                    formData.append("access_token", accessToken);
+                    formData.append("bookmark_id", Id);
+                    Axios.post("/", formData)
+                      .then((response) => {
+                        if (response.status === 200) {
+                          let responseData = response.data.content;
                           dispatch(
-                            notificationActions.add({
-                              Title: error.response.data.messageTitle,
-                              Message: error.response.data.message,
-                              closeButton: "Close",
+                            bookmarkActions.open({
+                              bookmarkId: responseData.bookmarkId,
+                              Bookmarkname: responseData.Bookmarkname,
+                              Summary: responseData.Summary,
+                              Description: responseData.Description,
                             })
                           );
-                          break;
-                      }
-                      console.log(error);
-                    });
+                        }
+                      })
+                      .catch((error) => {
+                        switch (error.response.data.messageTitle) {
+                          case "Project Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            navigate("/projects/list");
+                            break;
+                          case "User Token Check Failure.":
+                            dispatch(bookmarkActions.close({}));
+                            dispatch(actionActions.close({}));
+                            dispatch(actActions.close({}));
+                            dispatch(arcActions.close({}));
+                            dispatch(timelineActions.close({}));
+                            dispatch(worldBuildingActions.close({}));
+                            dispatch(projAuthActions.close());
+                            dispatch(userAuthActions.logout());
+                            navigate("/users/login");
+                            break;
+                          default:
+                            dispatch(
+                              notificationActions.add({
+                                Title: error.response.data.messageTitle,
+                                Message: error.response.data.message,
+                                closeButton: "Close",
+                              })
+                            );
+                            break;
+                        }
+                        console.log(error);
+                      });
+                  }
                   break;
                 default:
                   break;

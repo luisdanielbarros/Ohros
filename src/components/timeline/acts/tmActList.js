@@ -24,7 +24,7 @@ const TMActList = () => {
   //Fetch the data
   useEffect(() => {
     if (!Timeline.isInTimeline || !Arc.isInArc) return;
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("action", "viewacts");
     formData.append("access_token", accessToken);
     formData.append("arc_id", Arc.arcId);

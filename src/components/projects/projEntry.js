@@ -35,11 +35,11 @@ const ProjEntry = ({ Id, Title, Description }) => {
           })}
           onSubmit={(values, { setSubmitting }) => {
             //Open Project
-            var formData = new FormData();
+            let formData = new FormData();
             formData.append("action", "openproject");
             formData.append("access_token", accessToken);
             formData.append("project_id", Id);
-            for (var key in values) {
+            for (let key in values) {
               formData.append(key, values[key]);
             }
             Axios.post("/", formData)

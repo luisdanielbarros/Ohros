@@ -39,19 +39,18 @@ const TMTimelineUpdate = () => {
           timename: Yup.string()
             .required("Required")
             .max(64, "Exceeded maximum of 64 digits"),
-          summary: Yup.string()
-          .max(128, "Exceeded maximum of 128 digits"),
+          summary: Yup.string().max(128, "Exceeded maximum of 128 digits"),
           description: Yup.string(),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          var formData = new FormData();
+          let formData = new FormData();
           formData.append("action", "updatetimeline");
           formData.append("access_token", accessToken);
           formData.append("timeline_id", Timeline.timelineId);
-          for (var key in values) {
+          for (let key in values) {
             formData.append(key, values[key]);
           }
-          var reduxDispatchObject = {};
+          let reduxDispatchObject = {};
           formData.forEach((value, key) =>
             value === undefined
               ? (reduxDispatchObject[key] = "")

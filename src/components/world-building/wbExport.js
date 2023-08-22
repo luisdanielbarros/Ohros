@@ -103,7 +103,7 @@ const WBCharExport = () => {
                 WB.Character.oceanModel
                   .split(";")
                   .map(
-                    (oceanVar, index) =>
+                    (oceanlet, index) =>
                       [
                         "Openness",
                         "Conscientiousness",
@@ -112,7 +112,7 @@ const WBCharExport = () => {
                         "Neuroticism",
                       ][index] +
                       ": " +
-                      oceanVar +
+                      oceanlet +
                       "\n"
                   )
                   .join("")
@@ -126,7 +126,7 @@ const WBCharExport = () => {
                 WB.Character.jungModel
                   .split(";")
                   .map(
-                    (jungVar, index) =>
+                    (junglet, index) =>
                       [
                         "Extraversion",
                         "Thinking",
@@ -135,7 +135,7 @@ const WBCharExport = () => {
                         "Sensation",
                       ][index] +
                       ": " +
-                      jungVar +
+                      junglet +
                       "\n"
                   )
                   .join("")

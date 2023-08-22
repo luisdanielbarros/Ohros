@@ -25,7 +25,7 @@ const TMActionList = () => {
   //Fetch the data
   useEffect(() => {
     if (!Timeline.isInTimeline || !Arc.isInArc || !Act.isInAct) return;
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("action", "viewactions");
     formData.append("access_token", accessToken);
     formData.append("act_id", Act.actId);
